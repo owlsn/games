@@ -1,0 +1,22 @@
+{
+  "name": "games",
+  "version": "1.0.0",
+  "description": "sorts of little game written in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owlsn/games.git"
+  },
+  "author": "owlsn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/owlsn/games/issues"
+  },
+  "homepage": "https://github.com/owlsn/games#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}
