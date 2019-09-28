@@ -1,5 +1,5 @@
 {
-  "name": "games",
+  "name": "owlsn_games",
   "version": "1.0.0",
   "description": "sorts of little game written in javascript",
   "main": "index.js",
