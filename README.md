@@ -1,2 +1,1 @@
-# justforfun
-sorts of little game written in javascript
+说明文档

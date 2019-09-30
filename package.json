@@ -4,7 +4,10 @@
   "description": "sorts of little game written in javascript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "mocha --watch tests/",
+    "test": "mocha --reporter spec --timeout 2000 --recursive tests/",
+    "test-cov": "istanbul cover ./node_modules/mocha/bin/_mocha -- -t 2000 --recursive  -R spec tests/",
+    "test-html": "mocha --reporter mochawesome tests/"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,9 @@
   },
   "homepage": "https://github.com/owlsn/games#readme",
   "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
+    "mochawesome": "^4.1.0",
     "vue": "^2.6.10"
   }
 }
-
