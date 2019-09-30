@@ -1,5 +1,5 @@
 {
-  "name": "owlsn_games",
+  "name": "ogames",
   "version": "1.0.0",
   "description": "sorts of little game written in javascript",
   "main": "index.js",
