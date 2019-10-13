@@ -1,24 +1,23 @@
-var file = require('../lib/file.js');
-var expect = require('chai').expect;
+var file = require('../lib/file');
 
 describe('file：功能测试', function() {
 
     //writeFile功能测试
     describe('file.writeFile', function() {
 
-        it('写文件：成功', function() {
-            var path = 'README.md';
+        test('写文件：成功', function() {
+            var path = 'temp/write-success.txt';
             var data = '说明文档';
             return file.writeFile(path, data).then(function(flag) {
-                expect(flag).to.be.equal(true);
+                expect(flag).toEqual(true);
             });
         });
 
-        it('写文件：失败', function() {
-            var path = 'write-test.txt';
+        test('写文件：失败', function() {
+            var path = 'temp/write-fail.txt';
             var data = '我是写入的数据';
             return file.writeFile(path, data).then(function(){}, function(err) {
-                expect(true).to.be.equal(true);
+                expect(true).toEqual(true);
             });
         });
     });
@@ -26,17 +25,17 @@ describe('file：功能测试', function() {
     //readFile功能测试
     describe('file.readFile功能测试', function() {
 
-        it('读文件：成功', function() {
-            var path = 'README.md';
+        test('读文件：成功', function() {
+            var path = 'temp/write-success.txt';
             return file.readFile(path).then(function(data) {
-                expect(data).to.be.equal('说明文档');
+                expect(data).toEqual('说明文档');
             });
         });
 
-        it('读文件：失败', function() {
-            var path = 'write-test.txt';
+        test('读文件：失败', function() {
+            var path = 'temp/write-fail.txt';
             return file.readFile(path).then(function(){}, function(err) {
-                expect(true).to.be.equal(true);
+                expect(true).toEqual(true);
             });
         });
     });
