@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "7.7.4",
     "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@hot-loader/react-dom": "^16.11.0",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -27,7 +28,7 @@
     "eslint-config-react-app": "^5.1.0",
     "eslint-loader": "3.0.2",
     "eslint-plugin-flowtype": "3.13.0",
-    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "^1.6.1",
@@ -72,7 +73,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "lint": "eslint ./ --cache --fix --ignore-pattern .gitignore"
   },
   "eslintConfig": {
     "extends": "react-app"

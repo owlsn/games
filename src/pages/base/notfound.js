@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Progress, Button } from 'antd'
 
 // 声明组件  并对外输出
