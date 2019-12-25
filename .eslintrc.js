@@ -5,9 +5,7 @@ module.exports = {
     es6: true,
     jest: true
   },
-  extends: [
-    'standard'
-  ],
+  extends: ['react-app'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
@@ -15,6 +13,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  rules: {
-  }
+  rules: {}
 }
