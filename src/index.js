@@ -1,16 +1,15 @@
+import * as serviceWorker from './serviceWorker'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import * as serviceWorker from './serviceWorker'
-import App from './configs/router.config'
 import { Provider } from 'react-redux'
-import configure from './middleware/index'
+import HotRoute from './configs/router'
+import configure from './middleware'
 
 const store = configure({})
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <HotRoute />
   </Provider>,
   document.getElementById('root')
 )

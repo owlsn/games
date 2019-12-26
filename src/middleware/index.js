@@ -1,26 +1,29 @@
-import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import todoApp from '../redux/reducers/index'
-import logger from './logger'
 
-const nextReducer = require('../redux/reducers/index')
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import reducer from '../reducers'
+import logger from './logger'
+import crashReporter from './reporter'
+
+const middleware = [ thunk ]
+const nextReducer = require('../reducers')
 
 export default function configure(initialState) {
-  // console.log('initialState', initialState)
+
   const create = window.devToolsExtension
     ? window.devToolsExtension()(createStore)
     : createStore
 
   const createStoreWithMiddleware = applyMiddleware(
-    thunkMiddleware,
-    logger
-    // router,
+    logger,
+    ...middleware,
+    crashReporter
   )(create)
 
-  const store = createStoreWithMiddleware(todoApp, initialState)
+  const store = createStoreWithMiddleware(reducer, initialState)
 
   if (module.hot) {
-    module.hot.accept('../redux/reducers/index', () => {
+    module.hot.accept('../reducers', () => {
       store.replaceReducer(nextReducer)
     })
   }
