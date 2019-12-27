@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import HotRoute from './configs/router'
 import configure from './middleware'
+import './index.css'
 
 const store = configure({})
 
