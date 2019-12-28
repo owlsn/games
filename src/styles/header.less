@@ -1,0 +1,75 @@
+@import './theme.less';
+
+.header{
+  height: @header-height;
+  padding: 0; 
+  background: #fff;
+
+  img.logo{
+    width: @logo-width;
+    height: @logo-height;
+    margin: 8px 24px;
+    float: left
+  }
+  .searchInput{
+    float: left;
+    margin: @margin-size;
+    width: 25%;
+    height: @icon-size;
+    min-width: 200px;
+    max-width: 500px;
+    input{
+      background: @background-color;
+    }
+    input:hover{
+      background: @white;
+    }
+  }
+  .ant-input-suffix{
+    margin-top: 4px;
+  }
+  .polular, .all{
+    float: left;
+    border-radius:4px;
+    height: 28px;
+    margin: 10px 12px 10px 2px;
+    font-size: @icon-size;
+    text-align:center;
+    i{
+      float: left;
+      padding: 2px;
+    }
+  }
+  .message, .edit, .other{
+    float: left;
+    border-radius:4px;
+    height: 28px;
+    margin: 0px 12px 10px 2px;
+    font-size: @icon-size;
+    text-align:center;
+    i{
+      float: left;
+      padding: 2px;
+    }
+  }
+  .polular:hover, .all:hover, .message:hover, .edit:hover, .other:hover{
+    background: @background-color;
+  }
+  .chat{
+    position: relative;
+    float: left;
+    border-left: 1px solid;
+    border-left-color: #EDEFF1;
+    padding-left: 10px ;
+    height: 32px;
+    margin: 10px 12px 10px 2px;
+  }
+  .login{
+    margin: 9px;
+    float: right;
+  }
+  .register{
+    margin: 9px;
+    float: right;
+  }
+}
