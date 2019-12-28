@@ -3,8 +3,8 @@ import { Component } from 'react'
 import { Layout, /*Button, */ Input, Icon } from 'antd'
 import Trend from './trend'
 import User from './user'
-import '../styles/header.less'
-import owl from '../images/owl.svg'
+import '../../styles/header.less'
+import owl from '../../images/owl.svg'
 const { Search } = Input
 const { Header } = Layout
 
