@@ -1,7 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
 import { Menu, Dropdown, Button, Icon, message } from 'antd'
-import '../styles/trend.less'
+import '../../styles/trend.less'
 
 function handleMenuClick(e) {
   message.info('Click on menu item.')

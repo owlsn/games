@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from '../containers/app'
-import TopHeader from '../components/header'
+import TopHeader from '../components/header/header'
 import { hot } from 'react-hot-loader'
 
 const HotRoute = () => (
