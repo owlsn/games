@@ -1,0 +1,42 @@
+@import './theme.less';
+
+.layout{
+  background: #DAE0E6;
+}
+.banner{
+  padding: 10px 0;
+  margin: 0 auto;
+
+  .row{
+    .col{
+      width: 100%;
+      min-width: 960px;
+
+      .content{
+        height: 224px;
+        .title{
+          padding: 0 16px 10px;
+          span{
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+          }
+        }
+        .images{
+          height: 178px;
+          .ant-row, .ant-col{
+            height: 100%;
+          }
+          .detail{
+            height: 100%;
+            border-radius: 16px;
+            margin: 0 10px;
+            background: url(../images/placeholder.png) center center / cover no-repeat rgb(255, 255, 255);
+          }
+        }
+      }
+    }
+
+  }
+}

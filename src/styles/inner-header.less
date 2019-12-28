@@ -1,0 +1,47 @@
+@import './theme.less';
+
+.layout{
+  background: #DAE0E6;
+}
+.inner_header{
+  height: @inner-header-height;
+  padding: 0; 
+  background: #DAE0E6;
+  margin: 0 auto;
+
+  .row{
+    .col{
+      width: 100%;
+      min-width: 960px;
+
+      .content{
+        height: @inner-header-height;
+        line-height: 40px;
+        span{
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: .5px;
+          text-transform: uppercase;
+          margin: 0 8px;
+          float: left;
+        }
+        .rise, .fail, .all{
+          font-size: 20px;
+          margin: 8px 8px;
+
+          float: left;
+          border-radius:4px;
+          height: 24px;
+          font-size: @icon-size;
+          i{
+            float: left;
+          }
+        }
+        .rise:hover, .fail::hover, .all::hover{
+          background:  @background-color;
+        }
+      }
+    }
+
+  }
+}
