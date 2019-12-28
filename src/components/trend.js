@@ -1,6 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
 import { Menu, Dropdown, Button, Icon, message } from 'antd'
+import '../styles/trend.less'
 
 function handleMenuClick(e) {
   message.info('Click on menu item.')
@@ -29,40 +30,11 @@ const menu = (
 class Trend extends Component {
   render() {
     return (
-      <Dropdown overlay={menu}>
-        <Button
-          className="trend"
-          style={{
-            margin: '6px 0px',
-            float: 'left',
-            height: "36px",
-            width: '10%',
-            minWidth: '250px',
-            maxWidth: '350px',
-            border: 0
-          }}
-        >
-          <Icon
-            type="rise"
-            style={{
-              float: 'left',
-              margin: "4px"
-            }}
-          />
-          <span
-            style={{
-              float: 'left'
-            }}
-          >
-            流行趋势
-          </span>
-          <Icon
-            type="caret-down"
-            style={{
-              float: 'right',
-              margin: '4px'
-            }}
-          />
+      <Dropdown className="trend-dropdown" overlay={menu}>
+        <Button className="trend">
+          <Icon type="rise" className="popular" />
+          <span>流行趋势</span>
+          <Icon className="caret-down" type="caret-down" />
         </Button>
       </Dropdown>
     )

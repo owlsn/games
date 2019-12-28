@@ -18,20 +18,51 @@
     height: @icon-size;
     min-width: 200px;
     max-width: 500px;
+    input{
+      background: @background-color;
+    }
+    input:hover{
+      background: @white;
+    }
   }
-  .polular{
+  .ant-input-suffix{
+    margin-top: 4px;
+  }
+  .polular, .all{
     float: left;
-    margin: @margin-size;
+    border-radius:4px;
+    height: 28px;
+    margin: 10px 12px 10px 2px;
     font-size: @icon-size;
+    text-align:center;
+    i{
+      float: left;
+      padding: 2px;
+    }
   }
-  .all{
+  .message, .edit, .other{
     float: left;
-    margin: @margin-size;
+    border-radius:4px;
+    height: 28px;
+    margin: 0px 12px 10px 2px;
     font-size: @icon-size;
+    text-align:center;
+    i{
+      float: left;
+      padding: 2px;
+    }
   }
-  .user{
-    float: right;
-    margin: @margin-size;
+  .polular:hover, .all:hover, .message:hover, .edit:hover, .other:hover{
+    background: @background-color;
+  }
+  .chat{
+    position: relative;
+    float: left;
+    border-left: 1px solid;
+    border-left-color: #EDEFF1;
+    padding-left: 10px ;
+    height: 32px;
+    margin: 10px 12px 10px 2px;
   }
   .login{
     margin: 9px;

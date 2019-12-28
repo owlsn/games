@@ -1,8 +1,8 @@
 import React from 'react'
 import { Component } from 'react'
-import { Layout, Button, Input, Icon, Avatar } from 'antd'
+import { Layout, /*Button, */ Input, Icon } from 'antd'
 import Trend from './trend'
-
+import User from './user'
 import '../styles/header.less'
 import owl from '../images/owl.svg'
 const { Search } = Input
@@ -20,27 +20,31 @@ class TopHeader extends Component {
             size="default"
             placeholder="查询 owls"
           />
-          <a href="/">
-            <Icon className="polular" type="rise" />
+          <a className="polular" href="/">
+            <Icon type="rise" />
           </a>
-          <a href="/">
-            <Icon type="bar-chart" className="all" />
+          <a className="all" href="/">
+            <Icon type="bar-chart" />
           </a>
-          <Icon
-            type="caret-down"
-            style={{
-              float: 'right',
-              margin: '18px 0',
-              fontSize: '18px'
-            }}
-          />
-          <Avatar size={36} icon="user" className="user" />
-          <Button type="primary" size="default" className="login">
+          <div className='chat'>
+            <a className="message" href="/">
+              <Icon type="message" />
+            </a>
+            <a className="edit" href="/">
+              <Icon type="edit" />
+            </a>
+            <a className="other" href="/">
+              <Icon type="appstore" />
+            </a>
+          </div>
+
+          <User />
+          {/* <Button type="primary" size="default" className="login">
             登录
           </Button>
           <Button type="primary" size="default" className="register">
             注册
-          </Button>
+          </Button> */}
         </Header>
       </Layout>
     )
