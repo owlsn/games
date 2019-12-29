@@ -1,7 +1,8 @@
 import React from 'react'
 import { Component } from 'react'
-import { Menu, Dropdown, Button, Icon, message, Avatar, Badge } from 'antd'
-import '../../styles/user.less'
+import { Col, Menu, Dropdown, Button, Icon, message, Avatar, Badge  } from 'antd'
+import '../../styles/top-header.less'
+
 
 function handleMenuClick(e) {
   message.info('Click on menu item.')
@@ -30,20 +31,22 @@ const menu = (
 class User extends Component {
   render() {
     return (
-      <div className="user-info">
-        <Dropdown className="user-dropdown" overlay={menu}>
-          <Button className="user">
-            <div className='inner'>
-              <Badge className="badge" dot>
-                <Avatar className="avatar" shape="square" icon="avatar" />
+      <Col className='top_header_user'>
+        <Button type="primary">login</Button>
+        <Button type="primary">register</Button>
+        <Dropdown overlay={menu}>
+          <Button >
+            <div >
+              <Badge dot>
+                <Avatar shape="square" icon="avatar" />
               </Badge>
-              <span className="username" style={{fontSize: '12px'}}>username</span>
-              <span className="num" style={{fontSize: '12px'}}>message num</span>
+              <span>username</span>
+              <span>message num</span>
             </div>
-            <Icon className="caret-down" type="caret-down" />
+            <Icon type="caret-down" />
           </Button>
         </Dropdown>
-      </div>
+      </Col>
     )
   }
 }

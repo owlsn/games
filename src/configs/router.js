@@ -1,29 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from '../containers/app'
-import TopHeader from '../components/header/header'
 import InnerHeader from '../components/inner-header'
 import Banner from '../components/banner'
 import Index from '../containers/index'
-import Lists from '../components/lists'
-import Debug from '../containers/debug'
 import { hot } from 'react-hot-loader'
 
 const HotRoute = () => (
   <Router>
     <Switch>
       <Route path="/about"></Route>
-      <Route path="/header">
-        <TopHeader />
-      </Route>
       <Route path="/banner">
         <Banner />
-      </Route>
-      <Route path="/debug">
-        <Debug />
-      </Route>
-      <Route path="/lists">
-        <Lists />
       </Route>
       <Route path="/inner_header">
         <InnerHeader />
