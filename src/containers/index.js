@@ -5,7 +5,7 @@ import TopHeader from '../components/top-header/index'
 import Banner from '../components/banner'
 import InnerHeader from '../components/inner-header'
 import Posts from '../components/posts'
-import Sider from '../components/sider'
+import Items from '../components/items'
 
 const { Content } = Layout;
 
@@ -25,7 +25,7 @@ class Index extends Component {
           <Posts />
         </Col>
         <Col span={6}>
-          <Sider />
+          <Items />
         </Col>
       </Content>
     </Layout>
