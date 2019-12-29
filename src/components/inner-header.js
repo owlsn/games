@@ -22,7 +22,7 @@ const menu = (
 class InnerHeader extends Component {
   render() {
     return (
-      <Layout className="layout">
+      <Layout className="inner_header_layout">
         <Header className="inner_header">
           <Row className="row">
             <Col className="col">

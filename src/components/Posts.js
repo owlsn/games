@@ -1,16 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { Component } from 'react'
+import { Col, Row } from 'antd'
+import '../styles/posts.less'
 
-const Posts = ({posts}) => (
-  <ul>
-    {posts.map((post, i) =>
-      <li key={i}>{post.title}</li>
-    )}
-  </ul>
-)
-
-Posts.propTypes = {
-  posts: PropTypes.array.isRequired
+class Posts extends Component {
+  render() {
+    return (
+      <Col>
+        <Row>123</Row>
+        <Row>123</Row>
+        <Row>123</Row>
+        <Row>123</Row>
+      </Col>
+    )
+  }
 }
 
 export default Posts
