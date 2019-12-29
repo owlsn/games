@@ -1,10 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
-import { Layout, Row, Col, Icon, Menu, Dropdown } from 'antd'
-
+import { Row, Col, Icon, Menu, Dropdown } from 'antd'
 import '../styles/inner-header.less'
-
-const { Header } = Layout
 
 const menu = (
   <Menu>
@@ -22,32 +19,32 @@ const menu = (
 class InnerHeader extends Component {
   render() {
     return (
-      <Layout className="inner_header_layout">
-        <Header className="inner_header">
-          <Row className="row">
-            <Col className="col">
-              <div className="content">
-                <span>VIEW</span>
-                <a title="rise" className="rise" href="/">
-                  <Icon type="rise" />
-                </a>
-                <a title="fail" className="fail" href="/">
-                  <Icon type="fall" />
-                </a>
-                <a title="all" className="all" href="/">
-                  <Icon type="appstore" />
-                </a>
-                <span>SORT</span>
-                <Dropdown overlay={menu} trigger={['click']}>
-                  <a className="ant-dropdown-link" href="/">
-                    BEST <Icon type="down" />
-                  </a>
-                </Dropdown>
-              </div>
-            </Col>
-          </Row>
-        </Header>
-      </Layout>
+      <Row className='inner_header'>
+        <Col>VIEW</Col>
+        <Col>
+          <a title="rise" className="rise" href="/">
+            <Icon type="rise" />
+          </a>
+        </Col>
+        <Col>
+          <a title="fail" className="fail" href="/">
+            <Icon type="fall" />
+          </a>
+        </Col>
+        <Col>
+          <a title="all" className="all" href="/">
+            <Icon type="appstore" />
+          </a>
+        </Col>
+        <Col>SORT</Col>
+        <Col>
+          <Dropdown overlay={menu} trigger={['click']}>
+            <a className="ant-dropdown-link" href="/">
+              BEST <Icon type="down" />
+            </a>
+          </Dropdown>
+        </Col>
+      </Row>
     )
   }
 }

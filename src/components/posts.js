@@ -7,10 +7,10 @@ class Posts extends Component {
   render() {
     return (
       <Col>
-        <Row>123</Row>
-        <Row>123</Row>
-        <Row>123</Row>
-        <Row>123</Row>
+        <Row>posts123</Row>
+        <Row>posts123</Row>
+        <Row>posts123</Row>
+        <Row>posts123</Row>
       </Col>
     )
   }
