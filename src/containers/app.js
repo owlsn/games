@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
 import Picker from '../components/picker'
-import Posts from '../components/posts'
+import Posts from '../components/articles'
 
 class App extends Component {
   static propTypes = {

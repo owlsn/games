@@ -22,13 +22,17 @@ class Banner extends Component {
       cols.push(
         <Col key={i.toString()} span={24 / colCount}>
           <a href="/">
-            <div className="detail">content</div>
+            <div className="detail" style={{padding: '10px'}}>
+              <div style={{fontSize: '18px', fontWeight: '700', color:'black'}}>title</div>
+              <div style={{wordWrap: "break-word", color: 'black'}}>contentcontentcontentcontentcontentcontentcontentcontentcontentcontent</div>
+              <div style={{position: "absolute", bottom: '4px',  fontSize: '12px', fontWeight: '700'}}>category1,category2</div>
+            </div>
           </a>
         </Col>
       )
     }
     return (
-      <Layout className="layout">
+      <Layout className="banner_layout">
         <Content className="banner">
           <Row className="row">
             <Col className="col">

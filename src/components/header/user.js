@@ -37,8 +37,8 @@ class User extends Component {
               <Badge className="badge" dot>
                 <Avatar className="avatar" shape="square" icon="avatar" />
               </Badge>
-              <span className="username">username</span>
-              <span className="num">message num</span>
+              <span className="username" style={{fontSize: '12px'}}>username</span>
+              <span className="num" style={{fontSize: '12px'}}>message num</span>
             </div>
             <Icon className="caret-down" type="caret-down" />
           </Button>
