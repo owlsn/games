@@ -1,16 +1,50 @@
 .top_header_index{
   height: 48px;
+  background: #fff;
+  width: 100%;
   
   div{
     display: inline;
+    margin-left: 12px;
   }
+
   .top_header_logo img{
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
+    margin: 8px 16px;
   }
   
   .top_header_trend{
-    padding: 0;
+    display: inline-block;
+    width: 200px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+
+    a{
+      border-radius: 4px;
+      margin-bottom: 4px;
+      height: 36px;
+      display: inline-block;
+      width: 100%;
+    }
+    a:hover{
+      border: 1px solid #DAE0E6;
+    }
+
+    i{
+      color: black;
+    }
+    
+    i.rise{
+      margin-right: 6px;
+      font-size: 24px;
+      float: left;
+    }
+    i.down{
+      margin-top: 6px;
+      float: right;
+    }
   }
   
   .top_header_search{
