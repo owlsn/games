@@ -1,13 +1,12 @@
 import React from 'react'
 import { Component } from 'react'
-import { Col, Menu, Dropdown, Button, Icon, message } from 'antd'
+import { Col, Menu, Dropdown, Icon, message } from 'antd'
 import '../../styles/top-header.less'
 
 function handleMenuClick(e) {
   message.info('Click on menu item.')
   console.log('click', e)
 }
-
 
 const menu = (
   <Menu onClick={handleMenuClick}>
@@ -31,14 +30,13 @@ const menu = (
 class Trend extends Component {
   render() {
     return (
-      <Col className='top_header_trend'>
+      <Col className="top_header_trend">
         <Dropdown overlay={menu}>
-        <Button>
-          <Icon type="rise" />
-          <span>流行趋势</span>
-          <Icon type="caret-down" />
-        </Button>
-      </Dropdown>
+          <a className="ant-dropdown-link" href="/">
+                  <Icon className='rise' type="rise" />
+            popular <Icon className='down' type="down" />
+          </a>
+        </Dropdown>
       </Col>
     )
   }

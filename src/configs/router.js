@@ -9,7 +9,6 @@ import { hot } from 'react-hot-loader'
 const HotRoute = () => (
   <Router>
     <Switch>
-      <Route path="/about"></Route>
       <Route path="/banner">
         <Banner />
       </Route>
