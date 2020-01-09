@@ -1,22 +1,22 @@
 import React from 'react'
 import { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 // import Posts from '../components/posts'
-import axios from 'axios'
+import  fetchPosts  from '../actions'
 // import { Layout } from 'antd'
+import { connect } from 'react-redux'
 
 // const { Content } = Layout;
 
 class Index extends Component {
   static propTypes = {
     // posts: PropTypes.array.isRequired
+    get: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
   }
   componentDidMount() {
-    axios.post('/api/index', {}).then(response => {
-      console.log(response)
-    }).catch(err => {
-      console.log(err)
-    })
+    const { dispatch, get } = this.props
+    dispatch(fetchPosts(get))
   }
   render() {
     // const { posts } = this.props
@@ -31,4 +31,10 @@ class Index extends Component {
   }
 }
 
-export default Index
+const mapStateToProps = state => {
+  return {
+    get : true
+  }
+}
+
+export default connect(mapStateToProps)(Index)
