@@ -1,67 +1,84 @@
-// export const REQUEST_POSTS = 'REQUEST_POSTS'
-// export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-// export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
-// export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
+import axios from 'axios'
+import actionType from '../constants/action'
+// import { createAction } from 'redux-actions'
 
-// export const selectSubreddit = subreddit => ({
-//   type: SELECT_SUBREDDIT,
-//   subreddit
-// })
+// export const selectSubreddit = createAction(
+//   actionType.SELECT_SUBREDDIT,
+//   subreddit => subreddit
+// )
 
-// export const invalidateSubreddit = subreddit => ({
-//   type: INVALIDATE_SUBREDDIT,
-//   subreddit
-// })
+// export const invalidateSubreddit = createAction(
+//   actionType.INVALIDATE_SUBREDDIT,
+//   subreddit => subreddit
+// )
 
-// export const requestPosts = subreddit => ({
-//   type: REQUEST_POSTS,
-//   subreddit
-// })
+// export const requestPosts = createAction(
+//   actionType.REQUEST_POSTS,
+//   subreddit => subreddit
+// )
 
-// export const receivePosts = (subreddit, json) => ({
-//   type: RECEIVE_POSTS,
-//   subreddit,
-//   posts: json.data.children.map(child => child.data),
-//   receivedAt: Date.now()
-// })
 
-// const fetchPosts = subreddit => dispatch => {
-//   dispatch(requestPosts(subreddit))
-//   return fetch(`https://www.reddit.com/r/${subreddit}.json`)
-//     .then(response => response.json())
-//     .then(json => dispatch(receivePosts(subreddit, json)))
-// }
+// export const receivePosts = createAction(
+//   actionType.RECEIVE_POSTS,
+//   (subreddit, json) => ({
+//     subreddit,
+//     posts: json.data.children.map(child => child.data),
+//     receivedAt: Date.now()
+//   })
+// )
 
-// const shouldFetchPosts = (state, subreddit) => {
-//   const posts = state.postsBySubreddit[subreddit]
-//   if (!posts) {
-//     return true
-//   }
-//   if (posts.isFetching) {
-//     return false
-//   }
-//   return posts.didInvalidate
-// }
 
-// export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
-//   if (shouldFetchPosts(getState(), subreddit)) {
-//     return dispatch(fetchPosts(subreddit))
-//   }
-// }
-const fetchPosts = name => (dispatch, getState) => {
-  if(checkState(getState())){
-    return dispatch(fetchPosts(name))
-  }
+export const selectSubreddit = subreddit => ({
+  type: actionType.SELECT_SUBREDDIT,
+  subreddit
+})
+
+
+export const invalidateSubreddit = subreddit => ({
+  type: actionType.INVALIDATE_SUBREDDIT,
+  subreddit
+})
+
+export const requestPosts = subreddit => ({
+  type: actionType.REQUEST_POSTS,
+  subreddit
+})
+
+export const receivePosts = (subreddit, json) => ({
+  type: actionType.RECEIVE_POSTS,
+  subreddit,
+  posts: json.data.children.map(child => child.data),
+  receivedAt: Date.now()
+})
+
+const fetchPosts = subreddit => dispatch => {
+  dispatch(requestPosts(subreddit))
+  return axios.get(`https://www.reddit.com/r/${subreddit}.json`)
+  .then(response => { if(response.status === 200){
+    return response.data
+  }})
+  .then(json => {
+    dispatch(receivePosts(subreddit, json))
+  })
+  // .then(json => dispatch(receivePosts(subreddit, json)))
+  // return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+  //   .then(response => response.json())
+  //   .then(json => dispatch(receivePosts(subreddit, json)))
 }
 
-const checkState = (state) => {
-  const get = state.get 
-  if(!get){
+const shouldFetchPosts = (state, subreddit) => {
+  const posts = state.postsBySubreddit[subreddit]
+  if (!posts) {
     return true
   }
-  else{
+  if (posts.isFetching) {
     return false
   }
+  return posts.didInvalidate
 }
 
-export default fetchPosts 
+export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
+  if (shouldFetchPosts(getState(), subreddit)) {
+    return dispatch(fetchPosts(subreddit))
+  }
+}
