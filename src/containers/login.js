@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
-import { LOGIN } from '../constants/actions'
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL } from '../constants/actions'
+import axios from 'axios'
 
 const mapStateToProps = state => ({ ...state.auth })
 
@@ -9,11 +10,25 @@ const mapDispatchToProps = dispatch => ({
   loginApi : (values) => 
     {
       dispatch({ type: LOGIN })
+      axios.get('/test.json?' + JSON.stringify(values)).then(ret => {
+        if(ret.status === 200){
+          setTimeout(() => {
+            dispatch({ type: LOGIN_SUCCESS, ret : ret})
+          }, 3000);
+          return ret
+        }
+        else{
+          dispatch({ type: LOGIN_FAIL, err: ret })
+        }
+      }).catch( err => {
+        dispatch({ type: LOGIN_FAIL , err : err})
+      })
     }
 })
 
 class NormalLoginForm extends Component {
   componentDidMount() {
+    console.log(this.props)
     const { setFieldsValue } = this.props.form
     const username = this.props.username
     const password = this.props.password
@@ -74,6 +89,7 @@ class NormalLoginForm extends Component {
           </a>
           <Button
             type="primary"
+            disabled={this.props.fetching}
             htmlType="submit"
             className="login-form-button"
             style={{

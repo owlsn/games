@@ -1,15 +1,39 @@
-import { handleAction } from 'redux-actions'
-import { LOGIN } from '../../constants/actions'
+import { handleActions } from 'redux-actions'
+import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS } from '../../constants/actions'
 
-export default handleAction(
-  LOGIN,
-  (state, action) => ({
-    ...state,
-    username: 'testusername',
-    password: 'testpassword'
-  }),
+export default handleActions(
+  new Map([
+    [
+      LOGIN ,
+      (state, action) => ({
+        ...state,
+        fetching : true
+      })
+    ],
+    [
+      LOGIN_FAIL ,
+      (state, action) => ({
+        ...state,
+        fetching : false,
+        invalidate : true,
+        err : action.err
+      })
+    ],
+    [
+      LOGIN_SUCCESS ,
+      (state, action) => ({
+        ...state,
+        fetching : false,
+        invalidate : false,
+        ret : action.ret,
+        lastUpdateAt : ""
+      })
+    ]
+  ]),
   {
-    username: 'testusername',
-    password: 'testpassword'
+    fetching : false,
+    err : {},
+    ret : {},
+    lastUpdateAt : ""
   }
 )
