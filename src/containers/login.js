@@ -1,97 +1,94 @@
-import { Link } from 'react-router-dom';
-import ListErrors from './ListErrors';
-import React from 'react';
-import agent from '../actions';
-import { connect } from 'react-redux';
-import {
-  UPDATE_FIELD_AUTH,
-  LOGIN,
-  LOGIN_PAGE_UNLOADED
-} from '../constants/actions';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { LOGIN } from '../constants/actions'
 
-const mapStateToProps = state => ({ ...state.auth });
+const mapStateToProps = state => ({ ...state.auth })
 
 const mapDispatchToProps = dispatch => ({
-  onChangeEmail: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: 'email', value }),
-  onChangePassword: value =>
-    dispatch({ type: UPDATE_FIELD_AUTH, key: 'password', value }),
-  onSubmit: (email, password) =>
-    dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
-  onUnload: () =>
-    dispatch({ type: LOGIN_PAGE_UNLOADED })
-});
+  loginApi : (values) => 
+    {
+      dispatch({ type: LOGIN })
+    }
+})
 
-class Login extends React.Component {
-  constructor() {
-    super();
-    this.changeEmail = ev => this.props.onChangeEmail(ev.target.value);
-    this.changePassword = ev => this.props.onChangePassword(ev.target.value);
-    this.submitForm = (email, password) => ev => {
-      ev.preventDefault();
-      this.props.onSubmit(email, password);
-    };
+class NormalLoginForm extends Component {
+  componentDidMount() {
+    const { setFieldsValue } = this.props.form
+    const username = this.props.username
+    const password = this.props.password
+    setFieldsValue({
+      username : username,
+      password : password
+    })
   }
 
-  componentWillUnmount() {
-    this.props.onUnload();
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values)
+        this.props.loginApi(values)
+      }
+    })
   }
+
+
 
   render() {
-    const email = this.props.email;
-    const password = this.props.password;
+    const { getFieldDecorator } = this.props.form
     return (
-      <div className="auth-page">
-        <div className="container page">
-          <div className="row">
-
-            <div className="col-md-6 offset-md-3 col-xs-12">
-              <h1 className="text-xs-center">Sign In</h1>
-              <p className="text-xs-center">
-                <Link to="/register">
-                  Need an account?
-                </Link>
-              </p>
-
-              <ListErrors errors={this.props.errors} />
-
-              <form onSubmit={this.submitForm(email, password)}>
-                <fieldset>
-
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="email"
-                      placeholder="Email"
-                      value={email}
-                      onChange={this.changeEmail} />
-                  </fieldset>
-
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="password"
-                      placeholder="Password"
-                      value={password}
-                      onChange={this.changePassword} />
-                  </fieldset>
-
-                  <button
-                    className="btn btn-lg btn-primary pull-xs-right"
-                    type="submit"
-                    disabled={this.props.inProgress}>
-                    Sign in
-                  </button>
-
-                </fieldset>
-              </form>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    );
+      <Form onSubmit={this.handleSubmit} className="login-form" style={{
+        'maxWidth': "300px"
+      }}>
+        <Form.Item>
+          {getFieldDecorator('username', {
+            rules: [{ required: true, message: 'Please input your username!' }]
+          })(
+            <Input
+              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder="Username"
+            />
+          )}
+        </Form.Item>
+        <Form.Item>
+          {getFieldDecorator('password', {
+            rules: [{ required: true, message: 'Please input your Password!' }]
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="password"
+              placeholder="Password"
+            />
+          )}
+        </Form.Item>
+        <Form.Item>
+          {getFieldDecorator('remember', {
+            valuePropName: 'checked',
+            initialValue: true
+          })(<Checkbox>Remember me</Checkbox>)}
+          <a className="login-form-forgot" style={{
+            float: "right"
+          }} href="/">
+            Forgot password
+          </a>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            style={{
+              width: "100%"
+            }}
+          >
+            Log in
+          </Button>
+          Or <a href="/">register now!</a>
+        </Form.Item>
+      </Form>
+    )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+const Login = Form.create({ name: 'normal_login' })(NormalLoginForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
