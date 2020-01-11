@@ -6,7 +6,7 @@ import HotRoute from './configs/router'
 import configure from './middleware'
 import './index.css'
 
-const store = configure({})
+const store = configure()
 
 ReactDOM.render(
   <Provider store={store}>
