@@ -212,7 +212,7 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout style={{ background: 'transparent' }}>
+      <Layout className='main' style={{ background: 'transparent' }}>
         <Header
           className="header"
           style={{ height: '48px', background: '#fff' }}
@@ -417,7 +417,7 @@ class Index extends Component {
                   width={250}
                   style={{
                     background: '#fff',
-                    margin: '0 48px',
+                    margin: '0 48px 0 0',
                     borderRadius: '20px'
                   }}
                 >
@@ -452,7 +452,7 @@ class Index extends Component {
                   width={250}
                   style={{
                     background: '#fff',
-                    margin: '0 48px',
+                    margin: '0 48px 0 0',
                     borderRadius: '20px'
                   }}
                 >
@@ -487,7 +487,7 @@ class Index extends Component {
                   width={250}
                   style={{
                     background: '#fff',
-                    margin: '0 48px',
+                    margin: '0 48px 0 0',
                     borderRadius: '20px'
                   }}
                 >
