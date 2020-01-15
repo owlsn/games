@@ -1,13 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Login from '../containers/Login'
+import Login from '../containers/login'
+import Index from '../containers/index'
 import { hot } from 'react-hot-loader'
 
 const HotRoute = () => (
   <Router>
     <Switch>
-      <Route path="/">
+      <Route path="/login">
         <Login />
+      </Route>
+      <Route path="/">
+        <Index />
       </Route>
     </Switch>
   </Router>
