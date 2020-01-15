@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './index.less'
 import {
   Layout,
   Menu,
@@ -15,7 +16,9 @@ import {
   PageHeader,
   Dropdown,
   Button,
-  Tag
+  Tag,
+  BackTop,
+  Drawer
 } from 'antd'
 
 const { SubMenu } = Menu
@@ -192,6 +195,21 @@ class Index extends Component {
     })
   }
 
+  state = { visible: false }
+
+  showDrawer = e => {
+    this.setState({
+      visible: true
+    })
+    e.preventDefault()
+  }
+
+  onClose = () => {
+    this.setState({
+      visible: false
+    })
+  }
+
   render() {
     return (
       <Layout style={{ background: 'transparent' }}>
@@ -199,47 +217,73 @@ class Index extends Component {
           className="header"
           style={{ height: '48px', background: '#fff' }}
         >
-          <Menu
-            style={{ lineHeight: '48px', background: 'transparent' }}
-            onClick={this.handleClick}
-            selectedKeys={[this.state.current]}
-            mode="horizontal"
-          >
-            <Menu.Item key="mail">
-              <Icon type="mail" />
-              Navigation One
-            </Menu.Item>
-            <Menu.Item key="app" disabled>
-              <Icon type="appstore" />
-              Navigation Two
-            </Menu.Item>
-            <SubMenu
-              title={
-                <span className="submenu-title-wrapper">
-                  <Icon type="setting" />
-                  Navigation Three - Submenu
-                </span>
-              }
-            >
-              <Menu.ItemGroup title="Item 1">
-                <Menu.Item key="setting:1">Option 1</Menu.Item>
-                <Menu.Item key="setting:2">Option 2</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup title="Item 2">
-                <Menu.Item key="setting:3">Option 3</Menu.Item>
-                <Menu.Item key="setting:4">Option 4</Menu.Item>
-              </Menu.ItemGroup>
-            </SubMenu>
-            <Menu.Item key="alipay">
-              <a
-                href="https://ant.design"
-                target="_blank"
-                rel="noopener noreferrer"
+          <Row>
+            <Col span={18}>
+              <Menu
+                style={{ lineHeight: '48px', background: 'transparent' }}
+                onClick={this.handleClick}
+                selectedKeys={[this.state.current]}
+                mode="horizontal"
               >
-                Navigation Four - Link
-              </a>
-            </Menu.Item>
-          </Menu>
+                <Menu.Item key="mail">
+                  <Icon type="mail" />
+                  Navigation One
+                </Menu.Item>
+                <Menu.Item key="app" disabled>
+                  <Icon type="appstore" />
+                  Navigation Two
+                </Menu.Item>
+                <SubMenu
+                  title={
+                    <span className="submenu-title-wrapper">
+                      <Icon type="setting" />
+                      Navigation Three - Submenu
+                    </span>
+                  }
+                >
+                  <Menu.ItemGroup title="Item 1">
+                    <Menu.Item key="setting:1">Option 1</Menu.Item>
+                    <Menu.Item key="setting:2">Option 2</Menu.Item>
+                  </Menu.ItemGroup>
+                  <Menu.ItemGroup title="Item 2">
+                    <Menu.Item key="setting:3">Option 3</Menu.Item>
+                    <Menu.Item key="setting:4">Option 4</Menu.Item>
+                  </Menu.ItemGroup>
+                </SubMenu>
+                <Menu.Item key="alipay">
+                  <a
+                    href="https://ant.design"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Navigation Four - Link
+                  </a>
+                </Menu.Item>
+              </Menu>
+            </Col>
+            <Col span={6}>
+              <Menu
+                style={{
+                  lineHeight: '48px',
+                  background: 'transparent',
+                  float: 'right'
+                }}
+                onClick={this.handleClick}
+                selectedKeys={[this.state.current]}
+                mode="horizontal"
+              >
+                <Menu.Item>
+                  <Meta
+                    avatar={
+                      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                    }
+                    title="Card title"
+                    onClick={this.showDrawer}
+                  />
+                </Menu.Item>
+              </Menu>
+            </Col>
+          </Row>
         </Header>
         <Content style={{ padding: '0 50px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
@@ -264,13 +308,14 @@ class Index extends Component {
           <Row>
             <Col span={18}>
               <Layout style={{ padding: '24px 0', background: 'transparent' }}>
-                <Content style={{ background: '#fff' }}>
+                <Content style={{ background: '#fff', borderRadius: '20px' }}>
                   <Card
                     actions={[
                       <Icon type="setting" key="setting" />,
                       <Icon type="edit" key="edit" />,
                       <Icon type="ellipsis" key="ellipsis" />
                     ]}
+                    style={{ borderRadius: '20px 20px 0 0' }}
                   >
                     <PageHeader
                       title="Title"
@@ -314,8 +359,9 @@ class Index extends Component {
                 </Content>
               </Layout>
               <Layout style={{ padding: '24px 0', background: 'transparent' }}>
-                <Content style={{ background: '#fff' }}>
+                <Content style={{ background: '#fff', borderRadius: '20px' }}>
                   <Card
+                    style={{ borderRadius: '20px 20px 0 0' }}
                     actions={[
                       <Icon type="setting" key="setting" />,
                       <Icon type="edit" key="edit" />,
@@ -369,125 +415,88 @@ class Index extends Component {
               <Layout style={{ padding: '24px', background: 'transparent' }}>
                 <Sider
                   width={250}
-                  style={{ background: '#fff', margin: '0 48px' }}
+                  style={{
+                    background: '#fff',
+                    margin: '0 48px',
+                    borderRadius: '20px'
+                  }}
                 >
-                  <Menu
-                    mode="inline"
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    style={{ height: '100%' }}
+                  <Card
+                    style={{ borderRadius: '20px' }}
+                    cover={
+                      <img
+                        alt="example"
+                        style={{ borderRadius: '20px 20px 0 0' }}
+                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                      />
+                    }
+                    actions={[
+                      <Icon type="setting" key="setting" />,
+                      <Icon type="edit" key="edit" />,
+                      <Icon type="ellipsis" key="ellipsis" />
+                    ]}
                   >
-                    <SubMenu
-                      key="sub1"
-                      title={
-                        <span>
-                          <Icon type="user" />
-                          subnav 1
-                        </span>
+                    <Meta
+                      avatar={
+                        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                       }
-                    >
-                      <Menu.Item key="1">option1</Menu.Item>
-                      <Menu.Item key="2">option2</Menu.Item>
-                      <Menu.Item key="3">option3</Menu.Item>
-                      <Menu.Item key="4">option4</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                      key="sub2"
-                      title={
-                        <span>
-                          <Icon type="laptop" />
-                          subnav 2
-                        </span>
-                      }
-                    >
-                      <Menu.Item key="5">option5</Menu.Item>
-                      <Menu.Item key="6">option6</Menu.Item>
-                      <Menu.Item key="7">option7</Menu.Item>
-                      <Menu.Item key="8">option8</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                      key="sub3"
-                      title={
-                        <span>
-                          <Icon type="notification" />
-                          subnav 3
-                        </span>
-                      }
-                    >
-                      <Menu.Item key="9">option9</Menu.Item>
-                      <Menu.Item key="10">option10</Menu.Item>
-                      <Menu.Item key="11">option11</Menu.Item>
-                      <Menu.Item key="12">option12</Menu.Item>
-                    </SubMenu>
-                  </Menu>
+                      title="Card title"
+                      description="This is the description"
+                      style={{ borderRadius: '20px' }}
+                    />
+                  </Card>
                 </Sider>
               </Layout>
               <Layout style={{ padding: '24px', background: 'transparent' }}>
                 <Sider
                   width={250}
-                  style={{ background: '#fff', margin: '0 48px' }}
+                  style={{
+                    background: '#fff',
+                    margin: '0 48px',
+                    borderRadius: '20px'
+                  }}
                 >
-                  <Menu
-                    mode="inline"
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    style={{ height: '100%' }}
+                  <Card
+                    style={{ borderRadius: '20px' }}
+                    cover={
+                      <img
+                        alt="example"
+                        style={{ borderRadius: '20px 20px 0 0' }}
+                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                      />
+                    }
+                    actions={[
+                      <Icon type="setting" key="setting" />,
+                      <Icon type="edit" key="edit" />,
+                      <Icon type="ellipsis" key="ellipsis" />
+                    ]}
                   >
-                    <SubMenu
-                      key="sub1"
-                      title={
-                        <span>
-                          <Icon type="user" />
-                          subnav 1
-                        </span>
+                    <Meta
+                      avatar={
+                        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                       }
-                    >
-                      <Menu.Item key="1">option1</Menu.Item>
-                      <Menu.Item key="2">option2</Menu.Item>
-                      <Menu.Item key="3">option3</Menu.Item>
-                      <Menu.Item key="4">option4</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                      key="sub2"
-                      title={
-                        <span>
-                          <Icon type="laptop" />
-                          subnav 2
-                        </span>
-                      }
-                    >
-                      <Menu.Item key="5">option5</Menu.Item>
-                      <Menu.Item key="6">option6</Menu.Item>
-                      <Menu.Item key="7">option7</Menu.Item>
-                      <Menu.Item key="8">option8</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                      key="sub3"
-                      title={
-                        <span>
-                          <Icon type="notification" />
-                          subnav 3
-                        </span>
-                      }
-                    >
-                      <Menu.Item key="9">option9</Menu.Item>
-                      <Menu.Item key="10">option10</Menu.Item>
-                      <Menu.Item key="11">option11</Menu.Item>
-                      <Menu.Item key="12">option12</Menu.Item>
-                    </SubMenu>
-                  </Menu>
+                      title="Card title"
+                      description="This is the description"
+                      style={{ borderRadius: '20px' }}
+                    />
+                  </Card>
                 </Sider>
               </Layout>
               <Layout style={{ padding: '24px', background: 'transparent' }}>
                 <Sider
                   width={250}
-                  style={{ background: '#fff', margin: '0 48px' }}
+                  style={{
+                    background: '#fff',
+                    margin: '0 48px',
+                    borderRadius: '20px'
+                  }}
                 >
                   <Card
                     hoverable
-                    style={{ width: 250 }}
+                    style={{ width: 250, borderRadius: '20px' }}
                     cover={
                       <img
+                        style={{ borderRadius: '20px 20px 0 0' }}
                         alt="example"
                         src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
                       />
@@ -503,6 +512,43 @@ class Index extends Component {
             </Col>
           </Row>
         </Content>
+        <div>
+          <BackTop />
+        </div>
+        <div>
+          <Drawer
+            title="user info"
+            placement="right"
+            closable={false}
+            onClose={this.onClose}
+            visible={this.state.visible}
+          >
+            <Card
+              style={{ width: 200, borderRadius: '20px' }}
+              cover={
+                <img
+                  alt="example"
+                  style={{ borderRadius: '20px 20px 0 0' }}
+                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                />
+              }
+              actions={[
+                <Icon type="setting" key="setting" />,
+                <Icon type="edit" key="edit" />,
+                <Icon type="ellipsis" key="ellipsis" />
+              ]}
+            >
+              <Meta
+                avatar={
+                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                }
+                title="Card title"
+                description="This is the description"
+                style={{ borderRadius: '20px' }}
+              />
+            </Card>
+          </Drawer>
+        </div>
       </Layout>
     )
   }

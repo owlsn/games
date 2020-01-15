@@ -78,9 +78,9 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "cross-env NODE_EVN=development node scripts/start.js",
-    "build": "cross-env NODE_EVN=production node scripts/build.js",
-    "test": "cross-env NODE_EVN=test node scripts/test.js",
+    "start": "cross-env NODE_ENV=development node scripts/start.js",
+    "build": "cross-env NODE_ENV=production node scripts/build.js",
+    "test": "cross-env NODE_ENV=test node scripts/test.js",
     "lint": "eslint ./ --cache --fix --ignore-pattern .gitignore"
   },
   "eslintConfig": {
