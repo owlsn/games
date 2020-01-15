@@ -11,7 +11,7 @@ import {
   Avatar,
   Card,
   Timeline,
-  Steps,
+  // Steps,
   Typography,
   PageHeader,
   Dropdown,
@@ -23,7 +23,7 @@ import {
 
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
-const { Step } = Steps
+// const { Step } = Steps
 const { Meta } = Card
 const { Paragraph } = Typography
 
@@ -212,7 +212,7 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout className='main' style={{ background: 'transparent' }}>
+      <Layout className="main" style={{ background: 'transparent' }}>
         <Header
           className="header"
           style={{ height: '48px', background: '#fff' }}
@@ -285,26 +285,132 @@ class Index extends Component {
             </Col>
           </Row>
         </Header>
-        <Content style={{ padding: '0 50px' }}>
+        <Content style={{ padding: '0 50px', width: '90%', margin: '0 auto' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
         </Content>
-        <Content style={{ padding: '0 50px' }}>
-          <Steps current={1}>
-            <Step title="Finished" description="This is a description." />
+        <Content style={{ padding: '0 50px', width: '90%', margin: '0 auto' }}>
+          <Row>
+            <Col span={6}>
+              <Card
+                style={{ width: 250, borderRadius: '20px' }}
+                cover={
+                  <img
+                    alt="example"
+                    style={{ borderRadius: '20px 20px 0 0' }}
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <Icon type="setting" key="setting" />,
+                  <Icon type="edit" key="edit" />,
+                  <Icon type="ellipsis" key="ellipsis" />
+                ]}
+              >
+                <Meta
+                  avatar={
+                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  }
+                  title="Card title"
+                  description="This is the description"
+                  style={{ borderRadius: '20px' }}
+                />
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card
+                style={{ width: 250, borderRadius: '20px' }}
+                cover={
+                  <img
+                    alt="example"
+                    style={{ borderRadius: '20px 20px 0 0' }}
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <Icon type="setting" key="setting" />,
+                  <Icon type="edit" key="edit" />,
+                  <Icon type="ellipsis" key="ellipsis" />
+                ]}
+              >
+                <Meta
+                  avatar={
+                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  }
+                  title="Card title"
+                  description="This is the description"
+                  style={{ borderRadius: '20px' }}
+                />
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card
+                style={{ width: 250, borderRadius: '20px' }}
+                cover={
+                  <img
+                    alt="example"
+                    style={{ borderRadius: '20px 20px 0 0' }}
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <Icon type="setting" key="setting" />,
+                  <Icon type="edit" key="edit" />,
+                  <Icon type="ellipsis" key="ellipsis" />
+                ]}
+              >
+                <Meta
+                  avatar={
+                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  }
+                  title="Card title"
+                  description="This is the description"
+                  style={{ borderRadius: '20px' }}
+                />
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card
+                style={{ width: 250, borderRadius: '20px' }}
+                cover={
+                  <img
+                    alt="example"
+                    style={{ borderRadius: '20px 20px 0 0' }}
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                  />
+                }
+                actions={[
+                  <Icon type="setting" key="setting" />,
+                  <Icon type="edit" key="edit" />,
+                  <Icon type="ellipsis" key="ellipsis" />
+                ]}
+              >
+                <Meta
+                  avatar={
+                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  }
+                  title="Card title"
+                  description="This is the description"
+                  style={{ borderRadius: '20px' }}
+                />
+              </Card>
+            </Col>
+          </Row>
+          {/* <Steps current={1}>
+            <Step title="Finished" description="This is a description."></Step>
             <Step
               title="In Progress"
               subTitle="Left 00:00:08"
               description="This is a description."
-            />
-            <Step title="Waiting" description="This is a description." />
-            <Step title="Waiting" description="This is a description." />
-          </Steps>
+            ></Step>
+            <Step title="Waiting" description="This is a description."></Step>
+            <Step title="Waiting" description="This is a description."></Step>
+          </Steps> */}
         </Content>
-        <Content style={{ padding: '0 50px' }}>
+        <Content style={{ padding: '0 50px', width: '95%', margin: '0 auto' }}>
           <Row>
             <Col span={18}>
               <Layout style={{ padding: '24px 0', background: 'transparent' }}>
