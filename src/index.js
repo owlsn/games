@@ -12,6 +12,10 @@ import './pc/styles/index.css'
 import './mobile/sytles/index.css'
 
 const isMobile = require('is-mobile')
+// if(isMobile()){
+//   var attachFastClick = require('fastclick')
+//   attachFastClick(document.body)
+// }
 
 ReactDOM.render(
   <Provider store={isMobile() ? MobileConfigure(): PcConfigure()}>
