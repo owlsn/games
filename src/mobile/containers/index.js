@@ -1,12 +1,22 @@
 import React, { Component } from 'react'
 import {
   Card,
-  WingBlank,
-  WhiteSpace,
   Menu,
   ActivityIndicator,
-  NavBar
+  NavBar,
+  Popover,
+  Icon
 } from 'antd-mobile'
+
+const Item = Popover.Item
+
+const myImg = src => (
+  <img
+    src={`https://gw.alipayobjects.com/zos/rmsportal/${src}.svg`}
+    className="am-icon am-icon-xs"
+    alt=""
+  />
+)
 
 const data = [
   {
@@ -116,6 +126,22 @@ class Index extends Component {
     })
     console.log(label)
   }
+  state = {
+    visible: true,
+    selected: ''
+  }
+  onSelect = opt => {
+    // console.log(opt.props.value);
+    this.setState({
+      visible: false,
+      selected: opt.props.value
+    })
+  }
+  handleVisibleChange = visible => {
+    this.setState({
+      visible
+    })
+  }
   handleClick = e => {
     e.preventDefault() // Fix event propagation on Android
     this.setState({
@@ -176,14 +202,61 @@ class Index extends Component {
             onLeftClick={this.handleClick}
             className="top-nav-bar"
           >
-            Here is title
+            <Popover
+              mask
+              overlayClassName="fortest"
+              overlayStyle={{ color: 'currentColor' }}
+              visible={this.state.visible}
+              overlay={[
+                <Item
+                  key="4"
+                  value="scan"
+                  icon={myImg('tOtXhkIWzwotgGSeptou')}
+                  data-seed="logId"
+                >
+                  Scan
+                </Item>,
+                <Item
+                  key="5"
+                  value="special"
+                  icon={myImg('PKAgAqZWJVNwKsAJSmXd')}
+                  style={{ whiteSpace: 'nowrap' }}
+                >
+                  My Qrcode
+                </Item>,
+                <Item
+                  key="6"
+                  value="button ct"
+                  icon={myImg('uQIYTFeRrjPELImDRrPt')}
+                >
+                  <span style={{ marginRight: 5 }}>Help</span>
+                </Item>
+              ]}
+              align={{
+                overflow: { adjustY: 0, adjustX: 0 },
+                offset: [-10, 0]
+              }}
+              onVisibleChange={this.handleVisibleChange}
+              onSelect={this.onSelect}
+            >
+              <div
+                style={{
+                  height: '100%',
+                  padding: '0 15px',
+                  marginRight: '-15px',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              >
+                <Icon type="ellipsis" />
+              </div>
+            </Popover>
           </NavBar>
         </div>
         {show ? (initData ? menuEl : loadingEl) : null}
         {show ? <div className="menu-mask" onClick={this.onMaskClick} /> : null}
-        <WingBlank size="lg">
-          <WhiteSpace size="lg" />
-          <Card>
+        <div>
+          <Card full>
             <Card.Header
               title="This is title"
               thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
@@ -197,8 +270,119 @@ class Index extends Component {
               extra={<div>extra footer content</div>}
             />
           </Card>
-          <WhiteSpace size="lg" />
-        </WingBlank>
+        </div>
+        <div>
+          <Card full>
+            <Card.Header
+              title="This is title"
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer
+              content="footer content"
+              extra={<div>extra footer content</div>}
+            />
+          </Card>
+        </div>
+        <div>
+          <Card full>
+            <Card.Header
+              title="This is title"
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer
+              content="footer content"
+              extra={<div>extra footer content</div>}
+            />
+          </Card>
+        </div>
+        <div>
+          <Card full>
+            <Card.Header
+              title="This is title"
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer
+              content="footer content"
+              extra={<div>extra footer content</div>}
+            />
+          </Card>
+        </div>
+        <div>
+          <Card full>
+            <Card.Header
+              title="This is title"
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer
+              content="footer content"
+              extra={<div>extra footer content</div>}
+            />
+          </Card>
+        </div>
+        <div>
+          <Card full>
+            <Card.Header
+              title="This is title"
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer
+              content="footer content"
+              extra={<div>extra footer content</div>}
+            />
+          </Card>
+        </div>
+        <div>
+          <Card full>
+            <Card.Header
+              title="This is title"
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer
+              content="footer content"
+              extra={<div>extra footer content</div>}
+            />
+          </Card>
+        </div>
+        <div>
+          <Card full>
+            <Card.Header
+              title="This is title"
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer
+              content="footer content"
+              extra={<div>extra footer content</div>}
+            />
+          </Card>
+        </div>
       </div>
     )
   }
