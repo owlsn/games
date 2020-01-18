@@ -8,7 +8,7 @@ import crashReporter from './reporter'
 const middleware = [ thunk ]
 const nextReducer = require('../reducers')
 
-export default function configure(initialState) {
+export default function MobileConfigure(initialState) {
 
   const create = window.devToolsExtension
     ? window.devToolsExtension()(createStore)
