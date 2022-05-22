@@ -1,0 +1,9 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "owls",
+  "appid": "",
+  "setting": {
+    "es6": false,
+    "minified": false
+  }
+}
