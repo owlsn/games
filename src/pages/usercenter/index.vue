@@ -1,16 +1,16 @@
 <template>
-  <view class="index">
+  <view class="usercenter">
     <text>{{ msg }}</text>
   </view>
 </template>
 
 <script>
 import { ref } from "vue";
-import "./index.scss";
+import "./usercenter.scss";
 
 export default {
   setup() {
-    const msg = ref("index");
+    const msg = ref("usercenter");
     return {
       msg
     };
