@@ -1,11 +1,11 @@
 <template>
   <view class="index">
-    <text>我是首页！</text>
+    <text>我是购物车！</text>
   </view>
 </template>
 
 <script>
 export default {
-  name: 'Index'
+  name: 'Cart'
 }
 </script>
